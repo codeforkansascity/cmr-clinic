@@ -20,38 +20,41 @@
                 <p>&nbsp;</p>
                 <pii-input field="full_name">What is your full name?</pii-input>
                 <pii-input field="filing_court">Court where expungement will be filed.</pii-input>
-
-
                 <input-select-other field="sex" v-bind:options="sex_options">What is your sex</input-select-other>
                 <input-select-other field="race" v-bind:options="race_options">What is your race?</input-select-other>
-                <p>Address</p>
-                <pii-input field="address_line_1">Address Line 1</pii-input>
-                <pii-input field="address_line_2">Address Line 2</pii-input>
-                <pii-input field="city">City?</pii-input>
-                <input-state field="state" style="width: 20em;display: inline-block">State?</input-state>
-                <pii-input field="zip_code"
-                           style="width: 10em; display: inline-block; padding-right: 0em;"
-                >Zip?
-                </pii-input>
+                <pii-input field="status">Status?</pii-input>
+
+                <fieldset>
+                    <legend>Current Address</legend>
+                    <pii-input field="address_line_1">Address Line 1</pii-input>
+                    <pii-input field="address_line_2">Address Line 2</pii-input>
+                    <pii-input field="city">City?</pii-input>
+                    <input-state field="state" style="width: 20em;display: inline-block">State?</input-state>
+                    <pii-input field="zip_code"
+                               style="width: 10em; display: inline-block; padding-right: 0em;"
+                    >Zip?
+                    </pii-input>
+                </fieldset>
 
             </div>
             <div class="col-md-6" style="padding-left: 1em;">
-                <p style="display: inline">Your Driver’s License information?</p>
-
-                <pii-input field="license_number">License number</pii-input>
-
-                <input-state field="license_issuing_state">Issuing state</input-state>
-                <input-date field="license_expiration_date">Expiration date</input-date>
-                <input-date field="dob">What is your date of birth?</input-date>
-
+                <pii-input field="phone" v-bind:style="phoneStyle">Phone/Cell</pii-input>
+                <pii-input field="email" v-bind:style="phoneStyle">Email</pii-input>
+                <input-date field="dob">Date of birth?</input-date>
                 <pii-input field="judicial_circuit_number">Judicial Circuit Number</pii-input>
                 <pii-input field="county_name">County Name</pii-input>
 
-                <pii-note-field field="previous_expungements">Previous Expungements (Leave blank or enter state court and case number of previous expungements)</pii-note-field>
+                <pii-note-field field="previous_expungements">Previous Expungements (Leave blank or enter state court
+                    and case number of previous expungements)
+                </pii-note-field>
 
+                <fieldset>
+                    <legend>Driver’s License information</legend>
+                    <pii-input field="license_number">License number</pii-input>
+                    <input-state field="license_issuing_state">Issuing state</input-state>
+                    <input-date field="license_expiration_date">Expiration date</input-date>
+                </fieldset>
             </div>
-
-
         </div>
         <div class="form-group" v-show="isShowing">
             <div class="row">
@@ -70,6 +73,24 @@
     </b-container>
 
 </template>
+<style>
+    fieldset {
+        border: 2px solid saddlebrown !important;
+        padding: 0 1.4em 1.4em 1.4em !important;
+        margin: 0 0 1.5em 0 !important;
+        -webkit-box-shadow: 0px 0px 0px 0px #000;
+        box-shadow: 0px 0px 0px 0px #000;
+    }
+
+    legend {
+        font-size: 1.2em !important;
+        font-weight: bold !important;
+        text-align: left !important;
+        width: inherit; /* Or auto */
+        padding: 0 10px; /* To give a bit of padding on the left and right */
+        border-bottom: none;
+    }
+</style>
 
 <script>
     import PiiInput from "../components/pii-input";
@@ -139,6 +160,16 @@
                 isShowing: false,
                 savingStatus: 0,
                 savingMessage: '',
+                zipStyle: {
+                    width: '12em'
+                },
+                phoneStyle: {
+                    width: '20em'
+                }
+
+
+
+
             }
         },
         methods: {
