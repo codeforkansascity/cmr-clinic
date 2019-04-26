@@ -45,9 +45,9 @@
                                         Login
                                     </button>
 
-                                    <!--<a class="btn btn-link" href="/reset-password">-->
-                                        <!--Forgot Your Password?-->
-                                    <!--</a>-->
+                                    <a class="btn btn-link" href="https://cmr-20-app.codeforkc.org/password/reset">
+                                        Forgot Your Password?
+                                    </a>
                                 </div>
                                 <!--<div class="col-md-8 col-md-offset-4">-->
                                     <!--<p>-->
