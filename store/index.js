@@ -108,13 +108,13 @@ const store = () => new Vuex.Store({
         },
 
         storeConvictionField(state, data) {
-            console.log(data);
+
             const q = state.convictions[data.index];
 
             if (!q) {
                 state.convictions.push(data)
             } else {
-                q[data.field] = data.value;
+                Vue.set(state.convictions[data.index], data.field, data.value);
             }
 
         },
