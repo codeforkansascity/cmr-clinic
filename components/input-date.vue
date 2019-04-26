@@ -5,7 +5,7 @@
                 <slot></slot>
             </label>
 
-            <b-form-input v-model="inp_value" type="date" style="width: 10em"/>
+            <b-form-input v-model="inp_value" type="text" style="width: 10em"/>
 
         </div>
     </div>
