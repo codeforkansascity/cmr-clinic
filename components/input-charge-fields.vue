@@ -284,37 +284,42 @@
             },
             async save_charge() {
 
-                this.savingStatus = 1;
-                this.savingMessage = "Saving";
+                if ( this.$store.state.convictions[this.conviction_index].id) {
 
-                let client_id = this.$store.state.client.id;
-                let conviction_id = this.$store.state.convictions[this.conviction_index].id;
+                    this.savingStatus = 1;
+                    this.savingMessage = "Saving";
 
-                let data = this.$store.state.convictions[this.conviction_index].charges[this.charge_index];
+                    let client_id = this.$store.state.client.id;
+                    let conviction_id = this.$store.state.convictions[this.conviction_index].id;
 
-                let save_status = await this.$store.dispatch('saveCharge', {
-                        data: data,
-                        conviction_index: this.conviction_index,
-                        charge_index: this.charge_index,
-                        client_id: client_id,
-                        conviction_id: conviction_id
+                    let data = this.$store.state.convictions[this.conviction_index].charges[this.charge_index];
+
+                    let save_status = await this.$store.dispatch('saveCharge', {
+                            data: data,
+                            conviction_index: this.conviction_index,
+                            charge_index: this.charge_index,
+                            client_id: client_id,
+                            conviction_id: conviction_id
+                        }
+                    );
+
+                    this.savingStatus = 0;
+
+                    if (save_status) {
+                        this.savingMessage = "Saved";
+                        setTimeout(() => {
+                            this.savingMessage = "";
+                        }, 5000);
+
+                    } else {
+                        this.savingMessage = "Error";
                     }
-                );
 
-                this.savingStatus = 0;
 
-                if (save_status) {
-                    this.savingMessage = "Saved";
-                    setTimeout(() => {
-                        this.savingMessage = "";
-                    }, 5000);
-
+                    console.log('done saveing charge');
                 } else {
-                    this.savingMessage = "Error";
+                    alert('Save conviction first');
                 }
-
-
-                console.log('done saveing charge');
             }
         },
     }
