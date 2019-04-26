@@ -4,7 +4,7 @@
 
         <div class="row">
             <div class="col-md-11" style="padding-left: 1em; ">
-                <h2>{{ this.$store.state.client.full_name }} {{ this.$store.state.client.filing_court }} </h2>
+                <h2>{{ this.$store.state.client.full_name }} &nbsp; &nbsp; &nbsp; &nbsp; {{ this.$store.state.client.filing_court }} </h2>
             </div>
             <div>
                 <img v-show="isShowing" style="width: 1.8em" v-on:click="isShowing ^= true"
@@ -22,8 +22,36 @@
                 <pii-input field="filing_court">Court where expungement will be filed.</pii-input>
                 <input-select-other field="sex" v-bind:options="sex_options">What is your sex</input-select-other>
                 <input-select-other field="race" v-bind:options="race_options">What is your race?</input-select-other>
+                <pii-note-field field="previous_expungements">Previous Expungements (Leave blank or enter state court
+                    and case number of previous expungements)
+                </pii-note-field>
+
+
+
+            </div>
+            <div class="col-md-6" style="padding-left: 1em;">
+                <pii-input field="phone" v-bind:style="phoneStyle">Phone/Cell</pii-input>
+                <pii-input field="email" v-bind:style="phoneStyle">Email</pii-input>
+                <input-date field="dob">Date of birth?</input-date>
+                <pii-input field="judicial_circuit_number">Judicial Circuit Number</pii-input>
+                <pii-input field="county_name">County Name</pii-input>
                 <pii-input field="status">Status?</pii-input>
 
+
+
+
+            </div>
+        </div>
+        <div class="row" v-show="isShowing">
+            <div class="col-md-6" style="padding-left: 1em;">
+                <fieldset>
+                    <legend>Driver’s License information</legend>
+                    <pii-input field="license_number">License number</pii-input>
+                    <input-state field="license_issuing_state">Issuing state</input-state>
+                    <input-date field="license_expiration_date">Expiration date</input-date>
+                </fieldset>
+            </div>
+            <div class="col-md-6" style="padding-left: 1em;">
                 <fieldset>
                     <legend>Current Address</legend>
                     <pii-input field="address_line_1">Address Line 1</pii-input>
@@ -35,37 +63,17 @@
                     >Zip?
                     </pii-input>
                 </fieldset>
-
-            </div>
-            <div class="col-md-6" style="padding-left: 1em;">
-                <pii-input field="phone" v-bind:style="phoneStyle">Phone/Cell</pii-input>
-                <pii-input field="email" v-bind:style="phoneStyle">Email</pii-input>
-                <input-date field="dob">Date of birth?</input-date>
-                <pii-input field="judicial_circuit_number">Judicial Circuit Number</pii-input>
-                <pii-input field="county_name">County Name</pii-input>
-
-                <pii-note-field field="previous_expungements">Previous Expungements (Leave blank or enter state court
-                    and case number of previous expungements)
-                </pii-note-field>
-
-                <fieldset>
-                    <legend>Driver’s License information</legend>
-                    <pii-input field="license_number">License number</pii-input>
-                    <input-state field="license_issuing_state">Issuing state</input-state>
-                    <input-date field="license_expiration_date">Expiration date</input-date>
-                </fieldset>
             </div>
         </div>
         <div class="form-group" v-show="isShowing">
             <div class="row">
-                <div class="col-md-6">
-                    <button v-on:click="update" :disabled="savingStatus === 1" type="submit"
-                            class="btn btn-primary btn-sm">
+                <div class="col-md-10"></div>
+                <div class="col-md-2">
+                    <button class="float-right btn-success" v-on:click="update" :disabled="savingStatus === 1" type="submit"
+                            >
                         Save
                     </button>
                     <span v-show="this.savingMessage">{{ this.savingMessage }}</span>
-                </div>
-                <div class="col-md-6 text-right">
                 </div>
             </div>
         </div>
