@@ -1,6 +1,6 @@
 <template>
 
-    <div>
+    <div class="form-group" style="padding-left: 2em; padding-right: 2em;">
         <label>
             <slot></slot>
             <img src="/images/FontAwesome47 1.svg" style="display: inline-block;" v-if="this.$slots.help !== undefined"
