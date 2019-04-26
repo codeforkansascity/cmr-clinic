@@ -172,33 +172,33 @@
         </div>
 
 
-        <p>Circuit Court Division
+        <p v-if="this.$store.state.client['division_number']">Circuit Court Division
             <get_pii_value field="division_number" missing_prompt="Division Number/Address"></get_pii_value>
         </p>
-        <p>Municipal Division, City of
+        <p v-if="this.$store.state.client['city_name_here']">Municipal Division, City of
             <get_pii_value field="city_name_here" missing_prompt="Municipal Court Name/Address"></get_pii_value>
             ,
         </p>
         <p>Missouri Highway Patrol (MSHP) Criminal Justice Information Services (CJIS) Division,</p>
-        <p>Prosecuting Attorney(s)/Circuit Attorney(s)
+        <p v-if="this.$store.state.client['prosecuting_county']">Prosecuting Attorney(s)/Circuit Attorney(s)
             <get_pii_value field="prosecuting_county" missing_prompt="County of Prosecutor(s)/Address"></get_pii_value>
             County,
         </p>
         <p>Missouri Department of Revenue,</p>
-        <p>
+        <p v-if="this.$store.state.client['arresting_county']">
             <get_pii_value field="arresting_county" missing_prompt="Arresting County Name/Address"></get_pii_value>
             County Sheriff’s Department,
         </p>
-        <p>
+        <p v-if="this.$store.state.client['prosecuting_county']">
             <get_pii_value field="prosecuting_county" missing_prompt="County of Prosecutor(s)/Address"></get_pii_value>
             County Sheriff’s Department,
         </p>
-        <p>
+        <p v-if="this.$store.state.client['arresting_municipality']">
             <get_pii_value field="arresting_municipality"
                            missing_prompt="Arresting Municipality/Address"></get_pii_value>
             Municipal Police Department,
         </p>
-        <p>
+        <p v-if="this.$store.state.client['other_agencies_name']">
             <get_pii_value field="other_agencies_name"
                            missing_prompt="Other Agencies Names and Addreses"></get_pii_value>
             ,
