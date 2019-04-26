@@ -56,7 +56,8 @@ module.exports = {
         '@nuxtjs/auth',
         // Doc: https://bootstrap-vue.js.org/docs/
         // ['@nuxtjs/bootstrap-vue', {css: false}] // don't include a default build, use ours
-        'bootstrap-vue/nuxt'
+        'bootstrap-vue/nuxt',
+        '@nuxtjs/moment',
     ],
     bootstrapVue: {
         bootstrapCSS: 'css', // or `css`  - was false
@@ -67,23 +68,25 @@ module.exports = {
     */
     axios: {
         // See https://github.com/nuxt-community/axios-module#options
-        // baseURL: 'http://pdb-cmr-backend.test'
+
         // baseURL: 'http://127.0.0.1:5000'
-        baseURL: 'https://cmr-app.codeforkc.org/api/'
+
+        baseURL: 'http://pdb-cmr-backend.test'
+        // baseURL: 'https://cmr-20-app.codeforkc.org/'
     },
 
     auth: {
         strategies: {
             local: {
                 endpoints: {
-                    login: { url: 'login', method: 'post', propertyName: 'data.token' },
-                    user: { url: 'me', method: 'get', propertyName: 'data' },
-                    logout:  { url: 'logout', method: 'post' },
+                    // login: { url: 'login', method: 'post', propertyName: 'data.token' },
+                    // user: { url: 'me', method: 'get', propertyName: 'data' },
+                    // logout:  { url: 'logout', method: 'post' },
 
 
-                     // login: { url: 'http://pdb-cmr-backend.test/oauth/token', method: 'post', propertyName: 'access_token' },
-                     // user: { url: 'http://pdb-cmr-backend.test/api/me', method: 'get', propertyName: 'data' },
-                     // logout:  { url: 'logout', method: 'post' },
+                     login: { url: '/oauth/token', method: 'post', propertyName: 'access_token' },
+                     user: { url: '/api/me', method: 'get', propertyName: 'data' },
+                     logout:  { url: 'logout', method: 'post' },
                 }
             }
         }

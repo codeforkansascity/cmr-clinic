@@ -14,7 +14,7 @@
         </label>
 
         <b-form-input v-model="question"
-                      type="date"
+                      type="text"
                       class="form-control"></b-form-input>
 
     </div>
