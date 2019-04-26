@@ -10,7 +10,7 @@
             </div>
             <div class="col-md-2">
                 <h3>
-                    {{ this.release_date_display }}
+                    {{ this.$store.state.convictions[this.conviction_index]['release_date'] }}
                     <span v-if="this.$store.state.convictions[this.conviction_index]['notes']"> [Note]</span>
                 </h3>
             </div>
@@ -68,10 +68,10 @@
                 <input-conviction-field v-bind:i="this.conviction_index" f="approximate_date_of_charge"
                                         style="width: 20em;">Date of Charge (Approximate) - any format
                 </input-conviction-field>
-                <input-conviction-date-field v-bind:i="this.conviction_index" f="release_date" style="width: 10em;">
+                <input-conviction-field v-bind:i="this.conviction_index" f="release_date" style="width: 10em;">
                     Release
                     Date
-                </input-conviction-date-field>
+                </input-conviction-field>
                 <input-conviction-field v-bind:i="this.conviction_index" f="judge">What was the name of the Judge?
                 </input-conviction-field>
             </div>
@@ -214,10 +214,10 @@
                             case 'conviction_index':
                                 break;
 
-                            case 'release_date':
-                                var d = new Date(data[property]);
-                                conviction_payload[property] = d.toJSON().slice(0, 10);
-                                break;
+                            // case 'release_date':
+                            //     var d = new Date(data[property]);
+                            //     conviction_payload[property] = d.toJSON().slice(0, 10);
+                            //     break;
 
                             default:
                                 conviction_payload[property] = data[property];
@@ -261,16 +261,6 @@
                 const d = this.$store.state.convictions[this.conviction_index];
                 return d.case_number + ', ' + d.agency;
             },
-            release_date_display() {
-                if ( this.$store.state.convictions[this.conviction_index]['release_date'] ) {
-                    var d = new Date(this.$store.state.convictions[this.conviction_index]['release_date']);
-                    if (d && d.toJSON()) {
-                        return moment(d.toJSON().slice(0, 10),"YYYY-MM-DD").format('MM/DD/YYYY');
-                    }
-
-                }
-                return '';
-            }
         },
     }
 </script>
