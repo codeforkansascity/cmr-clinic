@@ -53,10 +53,10 @@
 
             <div class="col-md-1">
                 <img v-show="isShowing" style="width: 1.8em; margin-left: .55em" v-on:click="isShowing ^= true"
-                     src="/images/noun_collapse_2091048_000000.png" class="help-button">
+                     src="/images/noun_collapse_2091048_000000.png" class="help-button d-print-none">
                 <img v-show="!isShowing" style="width: 1.5em; margin-left: .55em; margin-bottom: 1em"
                      v-on:click="isShowing ^= true"
-                     src="/images/noun_expand_1211939_000000.png" class="help-button">
+                     src="/images/noun_expand_1211939_000000.png" class="help-button d-print-none">
             </div>
 
         </div>
@@ -100,23 +100,23 @@
                 </input-charge-note-field>
             </div>
 
-            <div class="col-md-2" style="padding-top: 1.25em;">
+            <div class="col-md-2 d-print-none" style="padding-top: 1.25em;">
 
             </div>
 
-            <div class="col-md-2">
+            <div class="col-md-2 d-print-none">
                 &nbsp;
             </div>
 
-            <div class="col-md-1" style="padding-top: 1.25em;">
+            <div class="col-md-1 d-print-none" style="padding-top: 1.25em;">
                 <a href="#" tabIndex="-1" class="float-left btn btn-outline-secondary btn-sm" @click="remove_charge">Remove</a>
             </div>
 
-            <div class="col-md-7" style="padding-left: 2em; padding-bottom: 1em;">
+            <div class="col-md-7 d-print-none" style="padding-left: 2em; padding-bottom: 1em;">
 
             </div>
 
-            <div class="col-md-2" :disabled="savingStatus === 1" style="padding-top: 1.25em; padding-bottom: 1em">
+            <div class="col-md-2 d-print-none" :disabled="savingStatus === 1" style="padding-top: 1.25em; padding-bottom: 1em">
                 <button class="float-right btn-success" @click="save_charge">Save</button>
                 <span v-show="this.savingMessage">{{ this.savingMessage }}</span>
             </div>

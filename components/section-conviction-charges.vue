@@ -7,7 +7,7 @@
                                      :key="conviction.id"
                                      :conviction_index="conviction_index" :client_id="client_id">
             </input-conviction-fields>
-            <add-conviction></add-conviction>
+            <add-conviction class=" d-print-none"></add-conviction>
         </div>
     </div>
 

@@ -16,10 +16,10 @@
             </div>
             <div class="col-md-1">
                 <img v-show="isShowing" style="width: 1.8em; margin-left: .1em" v-on:click="isShowing ^= true"
-                     src="/images/noun_collapse_2091048_000000.png" class="help-button">
+                     src="/images/noun_collapse_2091048_000000.png" class="help-button d-print-none">
                 <img v-show="!isShowing" style="width: 1.5em; margin-bottom: 1em;  margin-left: .1em"
                      v-on:click="isShowing ^= true"
-                     src="/images/noun_expand_1211939_000000.png" class="help-button">
+                     src="/images/noun_expand_1211939_000000.png" class="help-button d-print-none">
             </div>
 
 
@@ -93,20 +93,20 @@
 
             </div>
 
-            <div class="col-md-2" v-show="isShowing">
+            <div class="col-md-2 d-print-none" v-show="isShowing">
                 &nbsp;
             </div>
 
-            <div class="col-md-1" v-show="isShowing" style="padding-top: 1.25em;">
+            <div class="col-md-1 d-print-none" v-show="isShowing" style="padding-top: 1.25em;">
                 <a href="#" tabIndex="-1" class="float-left btn btn-outline-secondary btn-sm"
                    @click="remove_conviction">Remove</a>
             </div>
 
-            <div class="col-md-7" v-show="isShowing" style="padding-left: 2em; padding-bottom: 1em;">
+            <div class="col-md-7 d-print-none" v-show="isShowing" style="padding-left: 2em; padding-bottom: 1em;">
 
             </div>
 
-            <div class="col-md-2" v-show="isShowing" :disabled="savingStatus === 1"
+            <div class="col-md-2 d-print-none" v-show="isShowing" :disabled="savingStatus === 1"
                  style="padding-top: 1.25em; padding-bottom: 1em">
                 <button class="float-right btn-success" @click="save_conviction">Save</button>
                 <span v-show="this.savingMessage">{{ this.savingMessage }}</span>
@@ -129,7 +129,7 @@
                 </input-charge-fields>
 
 
-                <add-charge v-show="isShowing" v-bind:conviction_index="this.conviction_index"></add-charge>
+                <add-charge class=" d-print-none" v-show="isShowing" v-bind:conviction_index="this.conviction_index"></add-charge>
             </div>
 
         </div>

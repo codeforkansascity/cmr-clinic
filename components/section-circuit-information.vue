@@ -8,10 +8,10 @@
             </div>
             <div>
                 <img v-show="isShowing" style="width: 1.8em; margin-left: .55em" v-on:click="isShowing ^= true"
-                     src="/images/noun_collapse_2091048_000000.png" class="help-button">
+                     src="/images/noun_collapse_2091048_000000.png" class="help-button d-print-none">
                 <img v-show="!isShowing" style="width: 1.5em; margin-bottom: 1em; margin-left: .55em"
                      v-on:click="isShowing ^= true"
-                     src="/images/noun_expand_1211939_000000.png" class="help-button">
+                     src="/images/noun_expand_1211939_000000.png" class="help-button d-print-none">
 
 
             </div>
@@ -36,7 +36,7 @@
                 </pii-note-field>
             </div>
         </div>
-        <div class="form-group" v-show="isShowing">
+        <div class="form-group  d-print-none" v-show="isShowing">
             <div class="row">
                 <div class="col-md-10"></div>
                 <div class="col-md-2">
