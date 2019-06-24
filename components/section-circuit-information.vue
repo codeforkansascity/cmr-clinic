@@ -4,7 +4,7 @@
 
         <div class="row">
             <div class="col-md-11" style="padding-left: 1em; ">
-                <h2>Circuit: {{ this.$store.state.client.filing_court }}</h2>
+                <h2>Service: {{ this.$store.state.client.filing_court }}</h2>
             </div>
             <div>
                 <img v-show="isShowing" style="width: 1.8em; margin-left: .55em" v-on:click="isShowing ^= true"
