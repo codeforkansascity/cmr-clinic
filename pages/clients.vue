@@ -51,7 +51,8 @@
                     <td>{{ client.address_line_1}} {{ client.address_line_2 }} {{ client.city }} {{ client.state }}</td>
                     <td>{{ client.status }}</td>
                     <td><a @click="edit(client.id)">Edit</a></td>
-                    <td><a @click="print(client.id)">Print</a></td>
+                    <td><a @click="view(client.id)">View</a></td>
+                    <td><a @click="form(client.id)">Form</a></td>
                 </tr>
                 </tbody>
             </table>
@@ -109,7 +110,16 @@
 
                 this.$router.push('/intake')
             },
-            print(client_id) {
+            view(client_id) {
+                console.log(client_id);
+                // this.$store.dispatch('clearAll');
+                this.$store.dispatch('getClient', client_id);
+
+                this.$store.dispatch('getClientConvictions', client_id);
+
+                this.$router.push('/view-client')
+            },
+            form(client_id) {
                 console.log(client_id);
                 // this.$store.dispatch('clearAll');
                 this.$store.dispatch('getClient', client_id);
