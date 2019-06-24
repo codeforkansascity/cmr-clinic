@@ -19,7 +19,6 @@
             <div class="col-md-6" style="padding-left: 1em;">
                 <p>&nbsp;</p>
                 <pii-input field="full_name">What is your full name?</pii-input>
-                <pii-input field="filing_court">Court where expungement will be filed.</pii-input>
                 <input-select-other field="sex" v-bind:options="sex_options">What is your sex</input-select-other>
                 <input-select-other field="race" v-bind:options="race_options">What is your race?</input-select-other>
                 <pii-note-field field="previous_expungements">Previous Expungements (Leave blank or enter state court
@@ -33,9 +32,10 @@
                 <pii-input field="phone" v-bind:style="phoneStyle">Phone/Cell</pii-input>
                 <pii-input field="email" v-bind:style="phoneStyle">Email</pii-input>
                 <input-date field="dob">Date of birth?</input-date>
-                <pii-input field="judicial_circuit_number">Judicial Circuit Number</pii-input>
                 <pii-input field="county_name">County Name</pii-input>
-                <pii-input field="status">Status?</pii-input>
+                <pii-input field="filing_court">Court where expungement will be filed.</pii-input>
+                <pii-input field="judicial_circuit_number">Judicial Circuit Number</pii-input>
+                 <pii-input field="status">Status?</pii-input>
 
 
 
