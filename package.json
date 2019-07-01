@@ -5,10 +5,10 @@
   "author": "Code for KC and UMKC Law LTPP",
   "private": true,
   "scripts": {
-    "dev": "nuxt",
+    "dev": "nuxt -c nuxt.config.development.js",
     "build": "nuxt build",
     "start": "nuxt start",
-    "generate": "nuxt generate"
+    "generate": "nuxt generate -c nuxt.config.production.js"
   },
   "dependencies": {
     "@nuxt/builder": "^2.4.5",

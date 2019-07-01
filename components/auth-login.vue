@@ -45,7 +45,7 @@
                                         Login
                                     </button>
 
-                                    <a class="btn btn-link" href="https://cmr-20-app.codeforkc.org/password/reset">
+                                    <a class="btn btn-link" v-bind:href="this.base_url_for_display + '/password/reset'">
                                         Forgot Your Password?
                                     </a>
                                 </div>
@@ -76,7 +76,8 @@
             return {
                 email: '',
                 password: '',
-                error: null
+                error: null,
+                base_url_for_display: process.env.baseURL
             }
         },
 
@@ -89,8 +90,6 @@
                             email: this.email,
                             password: this.password,
                             grant_type: 'password',
-                            client_id: 2,
-                            client_secret: 'XXXXXX',
                             scope: '*'
 
                         }

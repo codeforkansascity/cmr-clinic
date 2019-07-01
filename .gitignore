@@ -81,3 +81,6 @@ dist
 .idea
 
 *.DS_Store
+# Environment configuration
+nuxt.config.development.js
+nuxt.config.production.js

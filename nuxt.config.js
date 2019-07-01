@@ -5,6 +5,8 @@ module.exports = {
 
     env: {
         apiPrefix: '',
+        // client_secret: process.env.CLIENT_SECRET,
+        // base_url_for_display: process.env.BASEURL,
     },
 
     /*
@@ -71,8 +73,8 @@ module.exports = {
 
         // baseURL: 'http://127.0.0.1:5000'
 
-        baseURL: 'http://pdb-cmr-backend.test'
-        // baseURL: 'https://cmr-20-app.codeforkc.org/'
+        baseURL: process.env.BASEURL
+        //baseURL: 'https://cmr-20-app.codeforkc.org/'
     },
 
     auth: {
