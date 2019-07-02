@@ -20,28 +20,11 @@ $ npm install
 # serve with hot reload at localhost:3000
 $ npm run dev
 
-# build for production and launch server
-$ npm run build
-$ npm start
-
-# generate static project
+# generate static project for production
 $ npm run generate
 ```
 
 ## Configuration
-
-### API
-
-Adjust the API endpoint host name in `nusxt.config.js`
-```
-  /*
-  ** Axios module configuration
-  */
-  axios: {
-    // See https://github.com/nuxt-community/axios-module#options
-      baseURL: 'http://localhost:3001/'
-  },
-```
 
 
 # Notes and things we have bumped into.
