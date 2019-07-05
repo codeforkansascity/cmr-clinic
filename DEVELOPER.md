@@ -6,9 +6,6 @@
    This is a [Nuxt/VueJS](https://nuxtjs.org/) Framework.
    To store data [VueX](https://vuex.vuejs.org/) is being used for local storage.
    
-### Back End
-   Backend work has started see  [codeforkansascity/clear_my_record_backend](https://github.com/codeforkansascity/clear_my_record_backend)
-
 ## Developer Setup
 
 To setup Bootstrap to compile I used https://gist.github.com/benmccallum/33ff008660218a578fc27fd33f51d1c1
@@ -19,20 +16,15 @@ $ npm install
 
 # serve with hot reload at localhost:3000
 $ npm run dev
-
-# build for production and launch server
-$ npm run build
-$ npm start
-
-# generate static project
-$ npm run generate
 ```
+
+
 
 ## Configuration
 
 ### API
 
-Adjust the API endpoint host name in `nusxt.config.js`
+Adjust the API endpoint host name in `nuxt.config.js`
 ```
   /*
   ** Axios module configuration
