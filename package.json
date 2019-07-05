@@ -6,6 +6,7 @@
   "private": true,
   "scripts": {
     "dev": "nuxt -c nuxt.config.development.js",
+    "local": "nuxt -c nuxt.config.local.js",
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate -c nuxt.config.production.js"

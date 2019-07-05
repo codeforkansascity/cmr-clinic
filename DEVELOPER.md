@@ -19,21 +19,11 @@ $ npm run dev
 ```
 
 
+# generate static project for production
+$ npm run generate
+```
 
 ## Configuration
-
-### API
-
-Adjust the API endpoint host name in `nuxt.config.js`
-```
-  /*
-  ** Axios module configuration
-  */
-  axios: {
-    // See https://github.com/nuxt-community/axios-module#options
-      baseURL: 'http://localhost:3001/'
-  },
-```
 
 
 # Notes and things we have bumped into.
