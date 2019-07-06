@@ -47,7 +47,7 @@
                                     ['Operating a car, boat, or plane while intoxicated?', this.getAns('are-you-excluded', 'intoxicated')],
                                     ['A violation of a motor vehicle ordinance/law while CDL?', this.getAns('are-you-excluded', 'cdl')],
                                     [' ', ' '],
-                                    ['Full name', this.getPii('pii', 'full_name')],
+                                    ['Full name', this.getPii('pii', 'name')],
                                     ['Sex', this.getPii('pii', 'sex')],
                                     ['Race', this.getPii('pii', 'race')],
                                     ['Date of Birth', this.getPii('pii', 'dob')],

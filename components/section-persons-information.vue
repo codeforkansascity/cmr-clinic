@@ -4,7 +4,7 @@
 
         <div class="row">
             <div class="col-md-11" style="padding-left: 1em; ">
-                <h2>{{ this.$store.state.client.full_name }} &nbsp; &nbsp; &nbsp; &nbsp; {{ this.$store.state.client.filing_court }} </h2>
+                <h2>{{ this.$store.state.client.name }} &nbsp; &nbsp; &nbsp; &nbsp; {{ this.$store.state.client.filing_court }} </h2>
             </div>
             <div>
                 <img v-show="isShowing" style="width: 1.8em" v-on:click="isShowing ^= true"
@@ -18,7 +18,7 @@
         <div class="row" v-show="isShowing">
             <div class="col-md-6" style="padding-left: 1em;">
                 <p>&nbsp;</p>
-                <pii-input field="full_name">What is your full name?</pii-input>
+                <pii-input field="name">What is your full name?</pii-input>
                 <input-select-other field="sex" v-bind:options="sex_options">What is your sex</input-select-other>
                 <input-select-other field="race" v-bind:options="race_options">What is your race?</input-select-other>
                 <pii-note-field field="previous_expungements">Previous Expungements (Leave blank or enter state court

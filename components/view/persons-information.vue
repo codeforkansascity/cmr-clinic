@@ -2,7 +2,7 @@
     <b-container>
         <div class="row">
             <div class="col-md-12" style="padding-left: 1em; ">
-                <h2>{{ this.$store.state.client.full_name }} &nbsp; &nbsp; &nbsp; &nbsp; {{
+                <h2>{{ this.$store.state.client.name }} &nbsp; &nbsp; &nbsp; &nbsp; {{
                     this.$store.state.client.filing_court }} </h2>
                 <p>Status {{ this.$store.state.client.status }}</p>
             </div>
@@ -10,7 +10,7 @@
         <div class="row">
             <div class="col-md-6" style="padding-left: 1em;">
                 <table class="table  table-sm">
-                    <tr is="pii-view" field="full_name">Full Name</tr>
+                    <tr is="pii-view" field="name">Full Name</tr>
                     <tr is="pii-view" field="filing_court">Court</tr>
                     <tr is="pii-view" field="sex" >Sex</tr>
                     <tr is="pii-view" field="race" >Race</tr>
