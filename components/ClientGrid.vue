@@ -310,7 +310,7 @@
 
             getDataUrl: function (new_page_number) {
                 var url = "api-client?";
-                url = this.$store.state.apiUrlPrefix + '/clients?';
+                url = this.$store.state.apiUrlPrefix + '/clients/v1.0.0?';
                 var queryParams = [];
 
                 queryParams.push("page=" + new_page_number);
