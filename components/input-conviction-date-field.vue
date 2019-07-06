@@ -13,9 +13,9 @@
             </transition>
         </label>
 
-        <b-form-input v-model="question"
-                      type="text"
-                      class="form-control"></b-form-input>
+        <flat-pickr v-model="question"
+                    :config="config"
+                    class="form-control"></flat-pickr>
 
     </div>
 </template>
@@ -23,6 +23,7 @@
 <script>
     export default {
         name: "input-conviction-date-field",
+        components: {},
         props: {
             i: {
                 type: [Number, String],
@@ -31,6 +32,15 @@
             f: {
                 type: String,
                 default: 'name',
+            },
+            config: {
+              type: Object,
+              default: function () {
+                return {
+                  dateFormat: "m/d/Y",
+                    allowInput: true,
+                }
+              },
             }
         },
         data: function () {
@@ -42,7 +52,15 @@
             question: {
                 get() {
                     const q = this.$store.state.convictions[this.i];
-                    return q ? q[this.f] : '';
+
+                    let date = null
+                    if(q && q[this.f] && q[this.f].length === 10) {
+
+                      date = this.$moment(q[this.f].replace(/-/g, '/')).toDate()
+                    }
+
+                    return date;
+
                 },
                 set(value) {
                     let db_value = value ? value : null;
@@ -54,3 +72,6 @@
     }
 </script>
 
+<style scoped>
+
+</style>
