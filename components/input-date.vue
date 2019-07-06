@@ -39,6 +39,8 @@
                   let date = this.$store.state.client[this.field];
 
                   if(date && date.length === 10) {
+                    // replace -  with / because safari fails to parse dates with -
+                    date.replace(/-/g, '/')
                     date = this.$moment(date).toDate()
                   }
 

@@ -55,7 +55,8 @@
 
                     let date = null
                     if(q && q[this.f] && q[this.f].length === 10) {
-                      date = this.$moment(q[this.f]).toDate()
+
+                      date = this.$moment(q[this.f].replace(/-/g, '/')).toDate()
                     }
 
                     return date;
