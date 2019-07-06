@@ -32,13 +32,13 @@
                         Until someone meets with the expungie, a short but meaningful description.
                     </template>
                 </input-conviction-field>
-                <input-conviction-field v-bind:i="this.conviction_index" f="arrest_date" style="width: 20em;">Approx.
+                <input-conviction-date-field v-bind:i="this.conviction_index" f="arrest_date" style="width: 20em;">Approx.
                     date
                     of arrest per Applicant?
                     <template slot="help">
                         Any format is ok, even just a year.
                     </template>
-                </input-conviction-field>
+                </input-conviction-date-field>
 
                 <input-conviction-field v-bind:i="this.conviction_index" f="case_number">What was the case number?
                     <template slot="help">
@@ -65,13 +65,13 @@
                 <input-conviction-field v-bind:i="this.conviction_index" f="release_status">Release Status (not
                     required)
                 </input-conviction-field>
-                <input-conviction-field v-bind:i="this.conviction_index" f="approximate_date_of_charge"
+                <input-conviction-date-field v-bind:i="this.conviction_index" f="approximate_date_of_charge"
                                         style="width: 20em;">Date of Charge (Approximate) - any format
-                </input-conviction-field>
-                <input-conviction-field v-bind:i="this.conviction_index" f="release_date" style="width: 10em;">
+                </input-conviction-date-field>
+                <input-conviction-date-field v-bind:i="this.conviction_index" f="release_date" style="width: 10em;">
                     Release
                     Date
-                </input-conviction-field>
+                </input-conviction-date-field>
                 <input-conviction-field v-bind:i="this.conviction_index" f="judge">What was the name of the Judge?
                 </input-conviction-field>
             </div>
