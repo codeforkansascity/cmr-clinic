@@ -46,7 +46,8 @@ module.exports = {
     */
     plugins: [
         {src: '~plugins/vue-select', ssr: false},
-        {src: '~/plugins/flatpickr', ssr: false}
+        {src: '~/plugins/flatpickr', ssr: false},
+        {src: '~plugins/mixins', ssr: false}
     ],
 
     /*

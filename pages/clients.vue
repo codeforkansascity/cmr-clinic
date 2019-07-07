@@ -2,67 +2,28 @@
     <div class="container">
         <h2>Applicants</h2>
 
-        <hr/>
-        <!-- Grid Actions Top -->
-        <div class="grid-top row mb-0 align-items-center">
-            <div class="col-lg-8 mb-2">
-
-                <a href="#" v-on:click="goToNew" class="btn btn-primary mb-3 mb-sm-2 mr-3">Add</a>
-
-            </div>
-            <div class="col-lg-4 text-lg-right mb-2">
-
-            </div>
-        </div>
-        <div class="grid no-more-tables table-responsive mb-4">
-            <table class="table table-striped table-hover mb-0">
-                <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Filing Court</th>
-                    <th>Phone</th>
-                    <th>Address</th>
-                    <th>Status</th>
-                    <th colspan="2">Action</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr v-if="gridState == 'wait'">
-                    <td colspan="4" style=" height: 475px;">
-                        <div class="alert alert-info"
-                             style="font-size: 2em;   vertical-align: middle;   text-align: center; margin-top: 160px;"
-                             role="alert">Please wait.
-                        </div>
-                    </td>
-                </tr>
-                <tr v-if="gridState == 'error'">
-                    <td colspan="4" style=" height: 475px;">
-                        <div class="alert alert-warning"
-                             style="font-size: 2em;   vertical-align: middle;   text-align: center; margin-top: 160px;"
-                             role="alert">Error please try again.<br>{{ global_error_message }}
-                        </div>
-                    </td>
-                </tr>
-
-                <tr v-else v-for="client in clients" :key="client.id">
-                    <td>{{ client.full_name }}</td>
-                    <td>{{ client.filing_court }}</td>
-                    <td>{{ client.phone }}</td>
-                    <td>{{ client.address_line_1}} {{ client.address_line_2 }} {{ client.city }} {{ client.state }}</td>
-                    <td>{{ client.status }}</td>
-                    <td><a @click="edit(client.id)">Edit</a></td>
-                    <td><a @click="view(client.id)">View</a></td>
-                    <td><a @click="form(client.id)">Form</a></td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
+        <client-grid :params="{
+        Page: '1',
+        Search: '',
+        sortOrder: '',
+        sortKey: '',
+        CanAdd: true,
+        CanEdit: true,
+        CanShow: true,
+        CanDelete: true,
+        CanExcel: true,
+        }"></client-grid>
     </div>
 </template>
 
 <script>
+
+    import ClientGrid from "../components/ClientGrid";
     export default {
         name: "client-list",
+        components: {
+            ClientGrid
+        },
         middleware: 'auth',
         data() {
             return {
@@ -75,60 +36,7 @@
         mounted() {
 
         },
-        async beforeCreate() {
-            this.gridState = 'wait';
-            await this.$axios.get(this.$store.state.apiUrlPrefix + '/clients')
-                .then((res) => {
-                    if (res.status === 200) {
-                        this.clients = res.data;
-                        this.gridState = 'good';
-                    } else {
-                        this.gridState = 'error';
-                    }
-                }).catch(error => {
 
-                    if (error.response) {
-                        alert('beforeCreate ' + error.response.data.message);
-                    } else {
-                        alert('beforeCreate ' + error);
-                    }
-                    this.gridState = 'error';
-                    return false;
-                });
-        },
-        methods: {
-
-            goToNew() {
-                this.$router.push('/add-client')
-            },
-            edit(client_id) {
-                console.log(client_id);
-                // this.$store.dispatch('clearAll');
-                this.$store.dispatch('getClient', client_id);
-
-                this.$store.dispatch('getClientConvictions', client_id);
-
-                this.$router.push('/intake')
-            },
-            view(client_id) {
-                console.log(client_id);
-                // this.$store.dispatch('clearAll');
-                this.$store.dispatch('getClient', client_id);
-
-                this.$store.dispatch('getClientConvictions', client_id);
-
-                this.$router.push('/view-client')
-            },
-            form(client_id) {
-                console.log(client_id);
-                // this.$store.dispatch('clearAll');
-                this.$store.dispatch('getClient', client_id);
-
-                this.$store.dispatch('getClientConvictions', client_id);
-
-                this.$router.push('/pro-se-form')
-            }
-        },
     }
 </script>
 
