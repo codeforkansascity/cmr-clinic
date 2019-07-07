@@ -4,10 +4,10 @@ module.exports = {
   ...{
     env: {
         client_key: 4,
-        baseURL: 'http://pdb-cmr-backend.test'
+        baseURL: 'http://cmr-clinic-backend.test'
     },
     axios: {
-        baseURL: 'http://pdb-cmr-backend.test'
+        baseURL: 'http://cmr-clinic-backend.test'
     },
   }
 
