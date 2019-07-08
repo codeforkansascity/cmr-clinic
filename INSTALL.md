@@ -2,6 +2,10 @@
 
 ## Quick Install
 
+1. Fork the project https://github.com/codeforkansascity/cmr-clinic
+2. Clone from your Forked copy
+3. Install and Run
+
 ``` bash
 # install dependencies
 $ npm install
