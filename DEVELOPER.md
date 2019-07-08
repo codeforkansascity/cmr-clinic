@@ -2,28 +2,9 @@
 
 ## Architecture
    
-### Front End
-   This is a [Nuxt/VueJS](https://nuxtjs.org/) Framework.
+   This uses a [Nuxt/VueJS](https://nuxtjs.org/) Framework.
    To store data [VueX](https://vuex.vuejs.org/) is being used for local storage.
    
-## Developer Setup
-
-To setup Bootstrap to compile, I used https://gist.github.com/benmccallum/33ff008660218a578fc27fd33f51d1c1
-
-``` bash
-# install dependencies
-$ npm install
-
-# serve with hot reload at localhost:3000
-$ npm run dev
-```
-
-
-# generate static project for production
-$ npm run generate
-```
-
-## Configuration
 
 
 # Notes and things we have bumped into.

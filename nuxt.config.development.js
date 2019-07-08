@@ -1,4 +1,9 @@
-// content of nuxt.config.generate.js file
+// Development API endpoint configuration.
+//
+//     npm run dev
+//
+// See package.json
+//
 module.exports = {
   ...require('./nuxt.config'),
   ...{
