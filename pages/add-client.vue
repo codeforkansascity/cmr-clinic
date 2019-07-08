@@ -11,7 +11,7 @@
 
                     <input-date field="dob">Date of birth?</input-date>
 
-                    <pii-input field="status">Status?</pii-input>
+                    <pii-input field="notes">Notes?</pii-input>
 
                 </div>
                 <div class="col-md-6" style="padding-left: 1em;">

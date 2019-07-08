@@ -4,7 +4,7 @@
             <div class="col-md-12" style="padding-left: 1em; ">
                 <h2>{{ this.$store.state.client.name }} &nbsp; &nbsp; &nbsp; &nbsp; {{
                     this.$store.state.client.filing_court }} </h2>
-                <p>Status {{ this.$store.state.client.status }}</p>
+                <p>Notes {{ this.$store.state.client.notes }}</p>
             </div>
         </div>
         <div class="row">

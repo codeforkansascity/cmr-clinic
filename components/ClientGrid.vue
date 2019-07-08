@@ -88,13 +88,13 @@
                     <ss-grid-column-header
                             v-on:selectedSort="sortColumn"
                             v-bind:selectedKey="sortKey"
-                            title="Sort by Status"
+                            title="Sort by Notes"
                             :params="{
-                                sortField: 'status',
+                                sortField: 'notes',
                                 InitialSortOrder: 'asc'
                             }"
                     >
-                        Status
+                        Notes
                     </ss-grid-column-header>
                     <th colspan="3" class="text-center">Actions</th>
                 </tr>
@@ -129,7 +129,7 @@
                     <td data-title="Filing Court">
                         {{ row.filing_court }}
                     </td>
-                    <td data-title="Status">{{ row.status }}</td>
+                    <td data-title="Notes">{{ row.notes }}</td>
                     <td><a @click="edit(row.id)">Edit</a></td>
                     <td><a @click="view(row.id)">View</a></td>
                     <td><a @click="form(row.id)">Form</a></td>

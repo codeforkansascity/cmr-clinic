@@ -34,10 +34,9 @@
                 <input-date field="dob">Date of birth?</input-date>
                 <pii-input field="county_name">County Name</pii-input>
                 <pii-input field="filing_court">Court where expungement will be filed.</pii-input>
-                <pii-input field="judicial_circuit_number">Judicial Circuit Number</pii-input>
-                 <pii-input field="status">Status?</pii-input>
-
-
+                <pii-input field="judicial_circuit_number">Judicial Circuit Number</pii-input>p[o;;[[;l"?
+                <pii-note-field field="notes">Notes on applicant
+                </pii-note-field>
 
 
             </div>
