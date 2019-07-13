@@ -9,10 +9,10 @@ module.exports = {
   ...{
     env: {
         client_key: 4,
-        baseURL: 'http://cmr-clinic-backend.test'
+        baseURL: 'http://cmr-clinic-admin-api.test'
     },
     axios: {
-        baseURL: 'http://cmr-clinic-backend.test'
+        baseURL: 'http://cmr-clinic-admin-api.test'
     },
   }
 
