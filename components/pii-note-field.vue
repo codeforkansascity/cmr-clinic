@@ -19,8 +19,8 @@
                 id="textarea"
                 v-model="question"
 
-                rows="3"
-                max-rows="6"
+                rows="4"
+                max-rows="10"
         ></b-form-textarea>
     </div>
 </template>
