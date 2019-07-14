@@ -1,7 +1,6 @@
 <template>
 
     <div>
-        <h3>Cases</h3>
         <div>
             <input-conviction-fields v-for="(conviction, conviction_index) in this.$store.getters.allCases"
                                      :key="conviction.id"
