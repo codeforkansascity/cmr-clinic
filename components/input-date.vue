@@ -17,34 +17,36 @@
 <script>
     export default {
         name: "input-date",
-      components: {},
-      props: {
+        components: {},
+        props: {
             field: {
                 type: String,
                 default: 'q1',
             },
             config: {
-              type: Object,
-              default: function () {
-                return {
-                  dateFormat: "m/d/Y",
-                  allowInput: true,
-                }
-              },
+                type: Object,
+                default: function () {
+                    return {
+                        altInput: true,
+                        altFormat: "m/d/Y",
+                        dateFormat: "Y-m-d",
+                        allowInput: true,
+                    }
+                },
             }
         },
         computed: {
             inp_value: {
                 get() {
-                  let date = this.$store.state.client[this.field];
+                    let date = this.$store.state.client[this.field];
 
-                  if(date && date.length === 10) {
-                    // replace -  with / because safari fails to parse dates with -
-                    date.replace(/-/g, '/')
-                    date = this.$moment(date).toDate()
-                  }
+                    if (date && date.length === 10) {
+                        // replace -  with / because safari fails to parse dates with -
+                        date.replace(/-/g, '/')
+                        date = this.$moment(date).toDate()
+                    }
 
-                  return date;
+                    return date;
                 },
                 set(value) {
                     let db_value = value ? value : null;
@@ -53,8 +55,7 @@
             },
         },
         data() {
-          return {
-          }
+            return {}
         }
 
     }

@@ -34,13 +34,15 @@
                 default: 'name',
             },
             config: {
-              type: Object,
-              default: function () {
-                return {
-                  dateFormat: "m/d/Y",
-                    allowInput: true,
-                }
-              },
+                type: Object,
+                default: function () {
+                    return {
+                        altInput: true,
+                        altFormat: "m/d/Y",
+                        dateFormat: "Y-m-d",
+                        allowInput: true,
+                    }
+                },
             }
         },
         data: function () {
@@ -54,9 +56,9 @@
                     const q = this.$store.state.convictions[this.i];
 
                     let date = null
-                    if(q && q[this.f] && q[this.f].length === 10) {
+                    if (q && q[this.f] && q[this.f].length === 10) {
 
-                      date = this.$moment(q[this.f].replace(/-/g, '/')).toDate()
+                        date = this.$moment(q[this.f].replace(/-/g, '/')).toDate()
                     }
 
                     return date;
