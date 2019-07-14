@@ -21,8 +21,8 @@
                 id="textarea"
                 v-model="question"
                 placeholder="Enter something..."
-                rows="3"
-                max-rows="6"
+                rows="6"
+                max-rows="10"
         ></b-form-textarea>
     </div>
 </template>

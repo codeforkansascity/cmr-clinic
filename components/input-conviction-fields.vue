@@ -2,17 +2,17 @@
     <b-container>
         <div class="row" style="padding-top: 2em">
 
-            <div class="col-md-4">
-                <h3><span style="color: lightgray;">CONVICTION:</span> {{ this.expungee_alias }}</h3>
+            <div class="col-md-6">
+                <h4>{{ this.expungee_alias }}</h4>
             </div>
-            <div class="col-md-5">
-                <h3> {{ this.case_alias }}</h3>
+            <div class="col-md-3">
+                <h4> {{ this.case_alias }}</h4>
             </div>
             <div class="col-md-2">
-                <h3>
-                    {{ this.$store.state.convictions[this.conviction_index]['release_date'] }}
-                    <span v-if="this.$store.state.convictions[this.conviction_index]['notes']"> [Note]</span>
-                </h3>
+                <h4>
+                {{ this.$store.state.convictions[this.conviction_index]['release_date'] }}
+
+                </h4>
             </div>
             <div class="col-md-1">
                 <img v-show="isShowing" style="width: 1.8em; margin-left: .1em" v-on:click="isShowing ^= true"
@@ -20,6 +20,10 @@
                 <img v-show="!isShowing" style="width: 1.5em; margin-bottom: 1em;  margin-left: .1em"
                      v-on:click="isShowing ^= true"
                      src="/images/noun_expand_1211939_000000.png" class="help-button d-print-none">
+            </div>
+
+            <div class="col-md-12" v-show="!isShowing" style="padding-left: 4em;">
+                {{ this.$store.state.convictions[this.conviction_index]['notes']}}
             </div>
 
 
