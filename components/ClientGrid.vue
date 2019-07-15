@@ -90,14 +90,14 @@
                 </thead>
                 <tbody>
                 <tr v-if="gridState == 'wait'">
-                    <td colspan="5" class="grid-alert">
+                    <td colspan="6" class="grid-alert">
                         <div class="alert alert-info" role="alert">
                             Please wait.
                         </div>
                     </td>
                 </tr>
                 <tr v-if="gridState == 'error'">
-                    <td colspan="5" class="grid-alert">
+                    <td colspan="6" class="grid-alert">
                         <div class="alert alert-warning" role="alert">
                             Error please try again.
                         </div>
@@ -105,7 +105,7 @@
                 </tr>
 
                 <tr v-if="gridState == 'good' && !gridData.length">
-                    <td colspan="5" class="grid-alert">
+                    <td colspan="6" class="grid-alert">
                         <div class="alert alert-warning" role="alert">
                             No matching records found.
                         </div>
@@ -113,12 +113,12 @@
                 </tr>
 
                 <tr v-else v-for="row in this.gridData" :key="row.id">
-                    <td data-title="Full Name">{{ row.name }}</td>
-                    <td data-title="Date of Birth">{{ row.dob }}</td>
+                    <td data-title="Full Name" style="width: 25%">{{ row.name }}</td>
+                    <td data-title="Date of Birth" style="width: 15%">{{ row.dob }}</td>
                     <td data-title="Notes">{{ row.notes }}</td>
-                    <td><a @click="edit(row.id)">Edit</a></td>
-                    <td><a @click="view(row.id)">View</a></td>
-                    <td><a @click="form(row.id)">Form</a></td>
+                    <td style="width: 5%"><a @click="edit(row.id)">Edit</a></td>
+                    <td style="width: 5%"><a @click="view(row.id)">View</a></td>
+                    <td style="width: 5%"><a @click="form(row.id)">Form</a></td>
                 </tr>
                 </tbody>
             </table>
