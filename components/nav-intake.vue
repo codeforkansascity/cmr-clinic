@@ -14,7 +14,7 @@
                     <a class="nav-link" href="/faq-intake">FAQs</a>
                 </li>
                 <li class="nav-item" v-if="this.$auth.loggedIn">
-                    <a class="nav-link" href="/clients">Clients</a>
+                    <a class="nav-link" href="/clients">Applicants</a>
                 </li>
 
             </ul>

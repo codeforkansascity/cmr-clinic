@@ -43,7 +43,7 @@
                 <tr>
                     <td>Petitioner Name</td>
                     <td>
-                        <get_pii_value field="full_name" missing_prompt="What is your full name?"></get_pii_value>
+                        <get_pii_value field="name" missing_prompt="What is your full name?"></get_pii_value>
                     </td>
                 </tr>
                 <tr>
@@ -156,7 +156,7 @@
 
 
         <p>
-            <get_pii_value field="full_name" missing_prompt="What is your full name?"></get_pii_value>
+            <get_pii_value field="name" missing_prompt="What is your full name?"></get_pii_value>
             ,<br>
             Petitioner
         </p>
@@ -247,7 +247,7 @@
             <li>The expungement is consistent with the public welfare and the interests of justice warrant the
                 expungement.
             </li>
-            <li>My full name is <get_pii_value field="full_name" missing_prompt="sss"></get_pii_value>.</li>
+            <li>My full name is <get_pii_value field="name" missing_prompt="sss"></get_pii_value>.</li>
             <li>My gender is
                 <get_pii_value field="sex" missing_prompt="sss"></get_pii_value>.
             </li>
@@ -295,7 +295,7 @@
         <p style="line-height: 1.25">
             _____________________________<br>
 
-            <get_pii_value field="full_name" missing_prompt="What is your full name?"></get_pii_value>
+            <get_pii_value field="name" missing_prompt="What is your full name?"></get_pii_value>
             <br>
             <get_pii_address_value field="address_line_1" missing_prompt="Address Line 1"></get_pii_address_value>
             <br>

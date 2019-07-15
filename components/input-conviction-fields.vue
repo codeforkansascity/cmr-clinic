@@ -2,17 +2,17 @@
     <b-container>
         <div class="row" style="padding-top: 2em">
 
-            <div class="col-md-4">
-                <h3><span style="color: lightgray;">CONVICTION:</span> {{ this.expungee_alias }}</h3>
+            <div class="col-md-6">
+                <h4>{{ this.expungee_alias }}</h4>
             </div>
-            <div class="col-md-5">
-                <h3> {{ this.case_alias }}</h3>
+            <div class="col-md-3">
+                <h4> {{ this.case_alias }}</h4>
             </div>
             <div class="col-md-2">
-                <h3>
-                    {{ this.$store.state.convictions[this.conviction_index]['release_date'] }}
-                    <span v-if="this.$store.state.convictions[this.conviction_index]['notes']"> [Note]</span>
-                </h3>
+                <h4>
+                {{ this.$store.state.convictions[this.conviction_index]['release_date'] }}
+
+                </h4>
             </div>
             <div class="col-md-1">
                 <img v-show="isShowing" style="width: 1.8em; margin-left: .1em" v-on:click="isShowing ^= true"
@@ -20,6 +20,10 @@
                 <img v-show="!isShowing" style="width: 1.5em; margin-bottom: 1em;  margin-left: .1em"
                      v-on:click="isShowing ^= true"
                      src="/images/noun_expand_1211939_000000.png" class="help-button d-print-none">
+            </div>
+
+            <div class="col-md-12" v-show="!isShowing" style="padding-left: 4em;">
+                {{ this.$store.state.convictions[this.conviction_index]['notes']}}
             </div>
 
 
@@ -32,13 +36,13 @@
                         Until someone meets with the expungie, a short but meaningful description.
                     </template>
                 </input-conviction-field>
-                <input-conviction-field v-bind:i="this.conviction_index" f="arrest_date" style="width: 20em;">Approx.
+                <input-conviction-date-field v-bind:i="this.conviction_index" f="arrest_date" style="width: 20em;">Approx.
                     date
                     of arrest per Applicant?
                     <template slot="help">
                         Any format is ok, even just a year.
                     </template>
-                </input-conviction-field>
+                </input-conviction-date-field>
 
                 <input-conviction-field v-bind:i="this.conviction_index" f="case_number">What was the case number?
                     <template slot="help">
@@ -65,13 +69,13 @@
                 <input-conviction-field v-bind:i="this.conviction_index" f="release_status">Release Status (not
                     required)
                 </input-conviction-field>
-                <input-conviction-field v-bind:i="this.conviction_index" f="approximate_date_of_charge"
+                <input-conviction-date-field v-bind:i="this.conviction_index" f="approximate_date_of_charge"
                                         style="width: 20em;">Date of Charge (Approximate) - any format
-                </input-conviction-field>
-                <input-conviction-field v-bind:i="this.conviction_index" f="release_date" style="width: 10em;">
+                </input-conviction-date-field>
+                <input-conviction-date-field v-bind:i="this.conviction_index" f="release_date" style="width: 10em;">
                     Release
                     Date
-                </input-conviction-field>
+                </input-conviction-date-field>
                 <input-conviction-field v-bind:i="this.conviction_index" f="judge">What was the name of the Judge?
                 </input-conviction-field>
             </div>

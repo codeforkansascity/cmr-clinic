@@ -11,44 +11,11 @@
                     <span v-if="this.$store.state.convictions[this.conviction_index].charges[this.charge_index]['notes']"> [Note]</span>
                 </h5>
             </div>
-            <div class="col-md-1">
 
-                <b-form-checkbox
-
-                        v-model="convicted"
-
-                        value="1"
-                        unchecked-value="0"></b-form-checkbox>
-                Convicted
-
-
+            <div class="col-md-3">
+                {{ dsp_convicted }} {{ dsp_eligible}} {{ dsp_please_expunge }}
             </div>
-            <div class="col-md-1">
 
-
-                <b-form-checkbox
-
-                        v-model="eligible"
-
-                        value="1"
-                        unchecked-value="0"></b-form-checkbox>
-                Eligible
-
-
-            </div>
-            <div class="col-md-1">
-
-
-                <b-form-checkbox
-
-                        v-model="please_expunge"
-
-                        value="1"
-                        unchecked-value="0"></b-form-checkbox>
-                Expunge
-
-
-            </div>
 
 
             <div class="col-md-1">
@@ -61,6 +28,30 @@
 
         </div>
 
+        <div class="row" v-show="isShowing" style="background-color: lightgoldenrodyellow; margin-top: 1em">
+            <div class="col-md-3">
+
+                <input-charge-select class="mb-2" v-bind:i="this.conviction_index" v-bind:j="this.charge_index"
+                                           f="convicted" v-bind:options="convicted_options">ddd
+                </input-charge-select>
+
+
+
+            </div>
+            <div class="col-md-3">
+
+                <input-charge-select class="mb-2" v-bind:i="this.conviction_index" v-bind:j="this.charge_index"
+                                     f="eligible" v-bind:options="eligible_options">ddd
+                </input-charge-select>
+
+            </div>
+            <div class="col-md-3">
+
+                <input-charge-select class="mb-2" v-bind:i="this.conviction_index" v-bind:j="this.charge_index"
+                                     f="please_expunge" v-bind:options="please_expunge_options">ddd
+                </input-charge-select>
+            </div>
+        </div>
         <div class="row" v-show="isShowing" style="background-color: lightgoldenrodyellow; margin-top: 1em">
             <div class="col-md-2">
                 <input-charge-field v-bind:i="this.conviction_index" v-bind:j="this.charge_index" f="citation">Citation
@@ -131,10 +122,11 @@
     import InputChargeNoteField from "./input-charge-note-field";
     import BContainer from "bootstrap-vue/src/components/layout/container";
     import InputChargeSelectOther from "./input-charge-select-other";
+    import InputChargeSelect from "./input-charge-select";
 
 
     export default {
-        components: {InputChargeSelectOther, BContainer, Charges, InputChargeField, InputChargeNoteField},
+        components: {InputChargeSelectOther, InputChargeSelect, BContainer, Charges, InputChargeField, InputChargeNoteField},
         name: "input-charge-fields",
         props: {
             charge: {
@@ -166,6 +158,48 @@
                 savingStatus: 0,
                 savingMessage: '',
                 checked: false,
+                convicted_options: [
+                    {
+                        value: null,
+                        text: 'Set Convicted'
+                    },
+                    {
+                        value: 0,
+                        text: 'NOT Covicted'
+                    }, {
+                        value: 1,
+                        text: 'Convicted'
+                    },
+
+                ],
+                eligible_options: [
+                    {
+                        value: null,
+                        text: 'Set Eligible'
+                    },
+                    {
+                        value: 0,
+                        text: 'NOT Eligible'
+                    }, {
+                        value: 1,
+                        text: 'Eligible'
+                    },
+
+                ],
+                please_expunge_options: [
+                    {
+                        value: null,
+                        text: 'Set Expunge'
+                    },
+                    {
+                        value: 0,
+                        text: 'Do NOT Expunge'
+                    }, {
+                        value: 1,
+                        text: 'Expunge'
+                    },
+
+                ],
                 conviction_charge_type_options: [
                     {
                         "name": "Felony",
@@ -209,6 +243,20 @@
             }
         },
         computed: {
+
+            dsp_convicted() {
+                let q = this.$store.state.convictions[this.conviction_index].charges[this.charge_index]['convicted'];
+                return parseInt(q) ? ' -- Convicted' : '';
+            },
+            dsp_eligible() {
+                let q = this.$store.state.convictions[this.conviction_index].charges[this.charge_index]['eligible'];
+                return parseInt(q) ? ', Eligible' : '';
+            },
+            dsp_please_expunge() {
+                let q = this.$store.state.convictions[this.conviction_index].charges[this.charge_index]['please_expunge'];
+                return parseInt(q) ? ', PleaseExpunge' : '';
+            },
+
             convicted: {
                 get() {
                     let q = this.$store.state.convictions[this.conviction_index].charges[this.charge_index]['convicted'];

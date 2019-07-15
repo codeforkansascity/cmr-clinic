@@ -83,3 +83,4 @@ dist
 *.DS_Store
 # Environment configuration
 nuxt.config.production.js
+nuxt.config.local.js

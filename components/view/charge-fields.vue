@@ -35,15 +35,18 @@
 
         computed: {
             convicted() {
-                return this.$store.state.convictions[this.conviction_index].charges[this.charge_index]['convicted'] ? ' -- Convicted' : '';
+                return parseInt(this.charge.convicted) ? ' -- Convicted' : '';
             },
             eligible() {
-                return this.$store.state.convictions[this.conviction_index].charges[this.charge_index]['eligible'] ? ', Eligible' : '';
+                return parseInt(this.charge.eligible) ? ', Eligible' : '';
             },
             please_expunge() {
-                return this.$store.state.convictions[this.conviction_index].charges[this.charge_index]['please_expunge'] ? ', PleaseExpunge' : '';
+                return parseInt(this.charge.please_expunge) ? ', PleaseExpunge' : '';
             },
         },
+      mounted() {
+          console.log('mounted charge', this.eligible, this.charge.eligible)
+      }
     }
 </script>
 

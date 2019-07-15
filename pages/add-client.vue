@@ -4,14 +4,14 @@
             <h2>Add Applicant</h2>
             <div class="row">
                 <div class="col-md-6" style="padding-left: 1em;">
-                    <pii-input field="full_name">Full name?</pii-input>
+                    <pii-input field="name">Full name?</pii-input>
                     <pii-input field="filing_court">Court where expungement will be filed.</pii-input>
                     <pii-input field="phone" v-bind:style="phoneStyle">Phone/Cell</pii-input>
                     <pii-input field="email" v-bind:style="phoneStyle">Email</pii-input>
 
                     <input-date field="dob">Date of birth?</input-date>
 
-                    <pii-input field="status">Status?</pii-input>
+                    <pii-input field="notes">Notes?</pii-input>
 
                 </div>
                 <div class="col-md-6" style="padding-left: 1em;">

@@ -4,7 +4,8 @@
 
         <div class="row">
             <div class="col-md-11" style="padding-left: 1em; ">
-                <h2>{{ this.$store.state.client.full_name }} &nbsp; &nbsp; &nbsp; &nbsp; {{ this.$store.state.client.filing_court }} </h2>
+                <h2>{{ this.$store.state.client.name }} &nbsp; &nbsp; &nbsp; &nbsp; {{
+                    this.$store.state.client.dob }} </h2>
             </div>
             <div>
                 <img v-show="isShowing" style="width: 1.8em" v-on:click="isShowing ^= true"
@@ -15,10 +16,21 @@
 
             </div>
         </div>
+        <div class="row" v-show="!isShowing">
+            <div class="col-md-12" style="padding-left: 1em;">
+                {{ this.$store.state.client.notes }}
+            </div>
+        </div>
+        <div class="row" v-show="isShowing">
+            <div class="col-md-12" style="padding-left: 1em;">
+                <pii-note-field field="notes">Notes on applicant
+                </pii-note-field>
+            </div>
+        </div>
         <div class="row" v-show="isShowing">
             <div class="col-md-6" style="padding-left: 1em;">
-                <p>&nbsp;</p>
-                <pii-input field="full_name">What is your full name?</pii-input>
+
+                <pii-input field="name">What is your full name?</pii-input>
                 <input-select-other field="sex" v-bind:options="sex_options">What is your sex</input-select-other>
                 <input-select-other field="race" v-bind:options="race_options">What is your race?</input-select-other>
                 <pii-note-field field="previous_expungements">Previous Expungements (Leave blank or enter state court
@@ -26,22 +38,14 @@
                 </pii-note-field>
 
 
-
             </div>
             <div class="col-md-6" style="padding-left: 1em;">
+                <input-date field="dob">Date of birth?</input-date>
                 <pii-input field="phone" v-bind:style="phoneStyle">Phone/Cell</pii-input>
                 <pii-input field="email" v-bind:style="phoneStyle">Email</pii-input>
-                <input-date field="dob">Date of birth?</input-date>
-                <pii-input field="county_name">County Name</pii-input>
-                <pii-input field="filing_court">Court where expungement will be filed.</pii-input>
-                <pii-input field="judicial_circuit_number">Judicial Circuit Number</pii-input>
-                 <pii-input field="status">Status?</pii-input>
-
-
-
-
             </div>
         </div>
+
         <div class="row" v-show="isShowing">
             <div class="col-md-6" style="padding-left: 1em;">
                 <fieldset>
@@ -49,6 +53,13 @@
                     <pii-input field="license_number">License number</pii-input>
                     <input-state field="license_issuing_state">Issuing state</input-state>
                     <input-date field="license_expiration_date">Expiration date</input-date>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Filing</legend>
+                    <pii-input field="county_name">County Name</pii-input>
+                    <pii-input field="filing_court">Court where expungement will be filed.</pii-input>
+                    <pii-input field="judicial_circuit_number">Judicial Circuit Number</pii-input>
                 </fieldset>
             </div>
             <div class="col-md-6" style="padding-left: 1em;">
@@ -64,13 +75,22 @@
                     </pii-input>
                 </fieldset>
             </div>
+
+            <div class="col-md-6" style="padding-left: 1em;">
+                <fieldset>
+                    <legend>CMS</legend>
+                    <pii-input field="cms_client_number">Client Number</pii-input>
+                    <pii-input field="cms_matter_number">Matter Number</pii-input>
+                </fieldset>
+            </div>
         </div>
         <div class="form-group  d-print-none" v-show="isShowing">
             <div class="row">
                 <div class="col-md-10"></div>
                 <div class="col-md-2">
-                    <button class="float-right btn-success" v-on:click="update" :disabled="savingStatus === 1" type="submit"
-                            >
+                    <button class="float-right btn-success" v-on:click="update" :disabled="savingStatus === 1"
+                            type="submit"
+                    >
                         Save
                     </button>
                     <span v-show="this.savingMessage">{{ this.savingMessage }}</span>
@@ -174,8 +194,6 @@
                 phoneStyle: {
                     width: '20em'
                 }
-
-
 
 
             }
