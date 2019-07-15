@@ -35,10 +35,10 @@
 
         computed: {
             convicted() {
-                return parseInt(this.charge.convicted)? ' -- Convicted' : '';
+                return parseInt(this.charge.convicted) ? ' -- Convicted' : '';
             },
             eligible() {
-                return parseInt(this.charge.eligible)? ', Eligible' : '';
+                return parseInt(this.charge.eligible) ? ', Eligible' : '';
             },
             please_expunge() {
                 return parseInt(this.charge.please_expunge) ? ', PleaseExpunge' : '';
