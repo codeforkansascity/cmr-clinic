@@ -6,3 +6,4 @@
                    - Cleaned up README.md
                    - Setup test data including seeders for test data.
                    - Table names are now plural.
+2.0.0.2.1 2019-07-14 - Cleaned up Client Grid column widths
