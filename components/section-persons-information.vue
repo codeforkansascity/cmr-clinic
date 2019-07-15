@@ -75,6 +75,14 @@
                     </pii-input>
                 </fieldset>
             </div>
+
+            <div class="col-md-6" style="padding-left: 1em;">
+                <fieldset>
+                    <legend>CMS</legend>
+                    <pii-input field="cms_client_number">Client Number</pii-input>
+                    <pii-input field="cms_matter_number">Matter Number</pii-input>
+                </fieldset>
+            </div>
         </div>
         <div class="form-group  d-print-none" v-show="isShowing">
             <div class="row">

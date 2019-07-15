@@ -66,24 +66,13 @@
                     <ss-grid-column-header
                             v-on:selectedSort="sortColumn"
                             v-bind:selectedKey="sortKey"
-                            title="Sort by Phone"
+                            title="Sort by Date of Birth"
                             :params="{
-                                sortField: 'phone',
+                                sortField: 'dob',
                                 InitialSortOrder: 'asc'
                             }"
                     >
-                        Phone
-                    </ss-grid-column-header>
-                    <ss-grid-column-header
-                            v-on:selectedSort="sortColumn"
-                            v-bind:selectedKey="sortKey"
-                            title="Sort by Filing Court"
-                            :params="{
-                                sortField: 'filing_court',
-                                InitialSortOrder: 'asc'
-                            }"
-                    >
-                        Filing Court
+                        DOB
                     </ss-grid-column-header>
                     <ss-grid-column-header
                             v-on:selectedSort="sortColumn"
@@ -125,10 +114,7 @@
 
                 <tr v-else v-for="row in this.gridData" :key="row.id">
                     <td data-title="Full Name">{{ row.name }}</td>
-                    <td data-title="Phone">{{ row.phone }}</td>
-                    <td data-title="Filing Court">
-                        {{ row.filing_court }}
-                    </td>
+                    <td data-title="Date of Birth">{{ row.dob }}</td>
                     <td data-title="Notes">{{ row.notes }}</td>
                     <td><a @click="edit(row.id)">Edit</a></td>
                     <td><a @click="view(row.id)">View</a></td>
