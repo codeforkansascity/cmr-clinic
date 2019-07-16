@@ -233,11 +233,11 @@
                     },
                     {
                         "name": "D",
-                        "abbreviation": "B"
+                        "abbreviation": "D"
                     },
                     {
                         "name": "E",
-                        "abbreviation": "C"
+                        "abbreviation": "E"
                     }
                 ],
             }
