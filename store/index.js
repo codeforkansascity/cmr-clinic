@@ -23,7 +23,6 @@ const store = () => new Vuex.Store({
         apiUrlPrefix: '/api',  // '/api',     // Used infront of CRUD api calls.  /api
         client: {},
         convictions: [],
-        gridparameters: [],
         gridParmsClient: {},
     },
     getters: {
@@ -207,19 +206,7 @@ const store = () => new Vuex.Store({
         // ---------------------------------------
         // Grid Parameters
         // ---------------------------------------
-        // this.$store.commit('storeGridParameters', {index: 'client_grid', field: this.f, value: db_value});
 
-        storeGridParameters(state, data) {
-
-            const q = state.gridparameters[data.index];
-
-            if (!q) {
-                state.gridparameters.push(data)
-            } else {
-                Vue.set(state.gridparameters[data.index], data.field, data.value);
-            }
-
-        },
         SET_GRID_PARMS(state, p) {
             console.log('SET_GRID_PARMSSET_GRID_PARMS');
             state.gridParmsClient = p
