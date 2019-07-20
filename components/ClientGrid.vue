@@ -180,10 +180,10 @@
         mounted: function () {
             this.params.Page = !isNaN(parseInt(this.params.Page))
                 ? parseInt(this.params.Page)
-                : null;
+                : 1;
             this.query = this.params.Search;
             this.current_page = this.params.Page;
-            this.getData(1);
+            this.getData(this.params.Page);
         },
 
         data: function () {
@@ -233,6 +233,13 @@
                     this.sortKey +
                     "&direction=" +
                     this.sortOrder;
+
+                this.$store.dispatch('setClientGrid',{
+                    client_page: new_page_number,
+                    client_keyword: this.query,
+                    client_column: this.sortKey,
+                    client_direction: this.sortOrder
+                });
 
                 this.gridData = [];
                 this.gridState = "wait";
