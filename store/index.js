@@ -24,6 +24,7 @@ const store = () => new Vuex.Store({
         client: {},
         convictions: [],
         gridParmsClient: {},
+        assignees: {}
     },
     getters: {
 
@@ -200,6 +201,13 @@ const store = () => new Vuex.Store({
 //                    ]
 //                };
 //            }
+        },
+
+        STORE_ASSIGNEES(state, data) {
+            console.log('mutation STORE_ASSIGNEES');
+
+            Vue.set(state, 'assignees', data);
+            console.log('mutation STORE_ASSIGNEES exit');
         },
 
 
@@ -578,6 +586,31 @@ const store = () => new Vuex.Store({
 
             commit('DELETE_CHARGE', {conviction_index: payload.conviction_index, charge_index: payload.charge_index});
 
+        },
+        // ---------------------------------------------
+        // Assignees
+        // ---------------------------------------------
+
+        async getAssignees({commit}) {
+            console.log('getAssignees');
+            await this.$axios.get(this.state.apiUrlPrefix + '/assignees/options')
+                .then((res) => {
+                    if (res.status === 200) {
+                        commit('STORE_ASSIGNEES', res.data)
+                    } else {
+                        console.log('error');
+                    }
+                }).catch(error => {
+
+                    if (error.response) {
+                        alert('aaaaa ' + error.response.data.message);
+                    } else {
+                        alert('aaaaa ' + error);
+                    }
+                    return false;
+                });
+
+            console.log('getClient  exit');
         },
     },
 

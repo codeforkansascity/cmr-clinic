@@ -12,6 +12,7 @@
         CanShow: true,
         CanDelete: true,
         CanExcel: true,
+        assignedFilter: this.assigned_filter
         }"></client-grid>
     </div>
 </template>
@@ -34,7 +35,8 @@
                 page: 1,
                 search: '',
                 column: 'Name',
-                direction: -1
+                direction: -1,
+                assigned_filter: -1,
             }
         },
         created() {
@@ -45,6 +47,7 @@
             this.search = x.client_keyword ? x.client_keyword : '';
             this.column = x.client_column ? x.client_column : 'name';
             this.direction = x.client_direction ? x.client_direction : -1;
+            this.assigned_filter = x.assigned_filter ? x.assigned_filter : -1;
         },
 
     }

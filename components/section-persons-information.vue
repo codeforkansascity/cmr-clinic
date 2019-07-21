@@ -16,6 +16,11 @@
 
             </div>
         </div>
+
+        <div class="row">
+
+
+        </div>
         <div class="row" v-show="!isShowing">
             <div class="col-md-12" style="padding-left: 1em;">
                 {{ this.$store.state.client.notes }}
@@ -81,6 +86,7 @@
                     <legend>CMS</legend>
                     <pii-input field="cms_client_number">Client Number</pii-input>
                     <pii-input field="cms_matter_number">Matter Number</pii-input>
+                    <input-select-assignment>Person Assigned</input-select-assignment>
                 </fieldset>
             </div>
         </div>
@@ -127,10 +133,11 @@
     import InputState from "./input-state";
     import InputSelectOther from "./input-select-other";
     import PiiNoteField from "./pii-note-field";
+    import InputSelectAssignment from "./input-select-assignment";
 
     export default {
         name: "section-persons-information",
-        components: {PiiNoteField, InputSelectOther, InputDate, PiiInput, InputState},
+        components: {PiiNoteField, InputSelectOther, InputDate, PiiInput, InputState, InputSelectAssignment},
         data() {
             return {
                 race_options: [

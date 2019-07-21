@@ -41,6 +41,13 @@
                                 aria-label="Name search"
                         />
                     </search-form-group>
+
+                    <select @change="filter_by_assignee"
+                            style="float: right; margin-left: 5px; width: 200px;"
+                            v-model="assigned_filter" class="form-control grid-filter">
+                        <option v-for="c in assignees" v-bind:value="c.id"> {{ c.name }}</option>
+                    </select>
+
                 </form>
             </div>
             <div class="col-lg-4 text-lg-right mb-2"></div>
@@ -66,13 +73,35 @@
                     <ss-grid-column-header
                             v-on:selectedSort="sortColumn"
                             v-bind:selectedKey="sortKey"
-                            title="Sort by Date of Birth"
+                            title="Sort by Step"
                             :params="{
-                                sortField: 'dob',
+                                sortField: 'step',
                                 InitialSortOrder: 'asc'
                             }"
                     >
-                        DOB
+                        Step
+                    </ss-grid-column-header>
+                    <ss-grid-column-header
+                            v-on:selectedSort="sortColumn"
+                            v-bind:selectedKey="sortKey"
+                            title="Sort by Assigned"
+                            :params="{
+                                sortField: 'assigned_to',
+                                InitialSortOrder: 'asc'
+                            }"
+                    >
+                        Assigned
+                    </ss-grid-column-header>
+                    <ss-grid-column-header
+                            v-on:selectedSort="sortColumn"
+                            v-bind:selectedKey="sortKey"
+                            title="Sort by counts"
+                            :params="{
+                                sortField: 'counts',
+                                InitialSortOrder: 'asc'
+                            }"
+                    >
+                        Counts
                     </ss-grid-column-header>
                     <ss-grid-column-header
                             v-on:selectedSort="sortColumn"
@@ -85,7 +114,7 @@
                     >
                         Notes
                     </ss-grid-column-header>
-                    <th colspan="4" class="text-center">Actions</th>
+                    <th  class="text-center">Actions</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -113,13 +142,15 @@
                 </tr>
 
                 <tr v-else v-for="row in this.gridData" :key="row.id">
-                    <td data-title="Full Name" style="width: 25%">{{ row.name }}</td>
-                    <td data-title="Date of Birth" style="width: 15%">{{ row.dob }}</td>
+                    <td data-title="Full Name" style="width: 25%">{{ row.name }} ({{ row.dob }})</td>
+                    <td data-title="Step" >Needs Review</td>
+                    <td data-title="Assigned to" >{{ row.assigned_to}}</td>
+                    <td data-title="Counts" >5/14</td>
                     <td data-title="Notes">{{ row.notes }}</td>
-                    <td style="width: 5%"><a href="#" @click="edit(row.id)">Edit</a></td>
-                    <td style="width: 5%"><a href="#" @click="view(row.id)">View</a></td>
-                    <td style="width: 5%"><a href="#" @click="form(row.id)">Form</a></td>
-                    <td style="width: 5%">
+                    <td style="width: 15%"><a href="#" @click="edit(row.id)">Edit</a>
+                  <a href="#" @click="view(row.id)">View</a>
+                   <a href="#" @click="form(row.id)">Form</a>
+
                         <span v-if="row.cms_client_number">
                             <a href="#" @click="cms(row.cms_client_number)">CMS</a>
                         </span>
@@ -183,6 +214,9 @@
         },
 
         mounted: function () {
+
+            this.assignees = this.getAssignees();
+
             this.params.Page = !isNaN(parseInt(this.params.Page))
                 ? parseInt(this.params.Page)
                 : 1;
@@ -202,7 +236,7 @@
 
                 sortOrder: this.params.sortOrder,
                 sortKey: this.params.sortKey,
-
+                assigned_filter: this.params.assignedFilter,
                 global_error_message: null,
 
                 form_errors: {
@@ -212,7 +246,8 @@
                     direction: false
                 },
                 server_message: false,
-                try_logging_in: false
+                try_logging_in: false,
+                assignees: null,
             };
         },
 
@@ -226,6 +261,35 @@
                 this.sortOrder = obj.sortOrder;
                 this.getData(1);
             },
+
+            filter_by_assignee: function() {
+                this.getData(1);
+            },
+
+            getAssignees: async function() {
+
+
+                await this.$axios.get(this.$store.state.apiUrlPrefix + '/assignees/options')
+                    .then(response => {
+                        if (response.status === 200) {
+                            Object.keys(this.form_errors).forEach(
+                                i => (this.form_errors[i] = false)
+                            );
+
+                            this.assignees = response.data;
+                        } else {
+                            this.server_message = response.status;
+                        }
+
+                    })
+                    .catch(error => {
+
+                        console.log(error.response);
+                        this.server_message = error;
+
+                    });
+            },
+
 
             getData: async function (new_page_number) {
                 this.global_error_message = null;
@@ -243,7 +307,8 @@
                     client_page: new_page_number,
                     client_keyword: this.query,
                     client_column: this.sortKey,
-                    client_direction: this.sortOrder
+                    client_direction: this.sortOrder,
+                    assigned_filter: this.assigned_filter
                 });
 
                 this.gridData = [];
@@ -316,7 +381,7 @@
                 if (this.isDefined(this.query) && this.query.trim().length > 0)
                     queryParams.push("keyword=" + this.query);
 
-                //                if (this.isDefined(this.searchType)) queryParams.push('search_type=' + this.searchType);
+                if (this.isDefined(this.assigned_filter)) queryParams.push('assigned_filter=' + this.assigned_filter);
                 //                if (this.isDefined(this.showFilter)) queryParams.push('show_filter=' + this.showFilter);
                 //                if (this.isDefined(this.contractorSelected)) queryParams.push('contractor_id=' + this.contractorSelected);
 
@@ -332,6 +397,8 @@
                 console.log(client_id);
                 // this.$store.dispatch('clearAll');
                 this.$store.dispatch('getClient', client_id);
+
+                this.$store.dispatch('getAssignees');
 
                 this.$store.dispatch('getClientConvictions', client_id);
 
@@ -350,6 +417,8 @@
                 console.log(client_id);
                 // this.$store.dispatch('clearAll');
                 this.$store.dispatch('getClient', client_id);
+
+
 
                 this.$store.dispatch('getClientConvictions', client_id);
 
