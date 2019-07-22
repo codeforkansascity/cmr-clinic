@@ -20,8 +20,11 @@
         name: "input-select-assignment",
         data() {
             return {
-                options: this.$store.state.assignees,
+                options: []
             }
+        },
+        mounted() {
+            this.options =  this.$store.state.assignees;
         },
         computed: {
             inp_value: {
@@ -33,9 +36,6 @@
                 },
             },
         },
-        mounted() {
-
-        }
     }
 </script>
 
