@@ -25,7 +25,7 @@
             <div class="col-md-12" v-show="!isShowing" style="padding-left: 4em;">
                 {{ this.$store.state.convictions[this.conviction_index]['notes']}}
             </div>
-
+            <div></div>
 
             <div class="col-md-6" v-show="isShowing" style="padding-left: 2em;">
 
