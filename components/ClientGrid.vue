@@ -85,7 +85,7 @@
                     >
                         Notes
                     </ss-grid-column-header>
-                    <th colspan="3" class="text-center">Actions</th>
+                    <th colspan="4" class="text-center">Actions</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -116,9 +116,14 @@
                     <td data-title="Full Name" style="width: 25%">{{ row.name }}</td>
                     <td data-title="Date of Birth" style="width: 15%">{{ row.dob }}</td>
                     <td data-title="Notes">{{ row.notes }}</td>
-                    <td style="width: 5%"><a @click="edit(row.id)">Edit</a></td>
-                    <td style="width: 5%"><a @click="view(row.id)">View</a></td>
-                    <td style="width: 5%"><a @click="form(row.id)">Form</a></td>
+                    <td style="width: 5%"><a href="#" @click="edit(row.id)">Edit</a></td>
+                    <td style="width: 5%"><a href="#" @click="view(row.id)">View</a></td>
+                    <td style="width: 5%"><a href="#" @click="form(row.id)">Form</a></td>
+                    <td style="width: 5%">
+                        <span v-if="row.cms_client_number">
+                            <a href="#" @click="cms(row.cms_client_number)">CMS</a>
+                        </span>
+                    </td>
                 </tr>
                 </tbody>
             </table>
@@ -180,10 +185,10 @@
         mounted: function () {
             this.params.Page = !isNaN(parseInt(this.params.Page))
                 ? parseInt(this.params.Page)
-                : null;
+                : 1;
             this.query = this.params.Search;
             this.current_page = this.params.Page;
-            this.getData(1);
+            this.getData(this.params.Page);
         },
 
         data: function () {
@@ -233,6 +238,13 @@
                     this.sortKey +
                     "&direction=" +
                     this.sortOrder;
+
+                this.$store.dispatch('setClientGrid',{
+                    client_page: new_page_number,
+                    client_keyword: this.query,
+                    client_column: this.sortKey,
+                    client_direction: this.sortOrder
+                });
 
                 this.gridData = [];
                 this.gridState = "wait";
@@ -342,6 +354,14 @@
                 this.$store.dispatch('getClientConvictions', client_id);
 
                 this.$router.push('/pro-se-form')
+            },
+            cms(cms_client_number) {
+                if ( cms_client_number ) {
+                    window.open("https://prose.umkc.edu/civicrm/contact/view?reset=1&cid="+cms_client_number, "_blank");
+                } else {
+                    alert ('Invalid CMS Client Number')
+                }
+
             }
 
         }
